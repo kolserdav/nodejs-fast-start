@@ -24,3 +24,5 @@ app/yarn-error.log*
 
 node/dist/
 node/node_modules/
+
+node_modules/
