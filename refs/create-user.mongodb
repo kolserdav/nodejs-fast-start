@@ -1,0 +1,1 @@
+db.createUser({"user": "superuser", "pwd": "kjl;jglfdu90uhjlHL", "roles": [{"role": "userAdminAnyDatabase", "db": "admin"}, {"role": "readWriteAnyDatabase", "db": "admin"}, {"role": "dbAdminAnyDatabase", "db":"admin"}, {"role": "clusterAdmin", "db": "admin"}]})

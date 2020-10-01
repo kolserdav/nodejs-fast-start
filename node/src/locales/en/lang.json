@@ -1,0 +1,10 @@
+{
+  "user": {
+    "received": {
+      "success": "User received",
+      "error": "Error getting user",
+      "warning": "User is not found"
+    }
+  },
+  "test": "mest"
+}

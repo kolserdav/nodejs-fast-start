@@ -1,0 +1,32 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "lib": [
+      "esnext",
+      "es2015.promise"
+    ],
+    "module": "commonjs",
+    "outDir": "dist/",
+    "allowJs": true,
+    "checkJs": true,
+    "pretty": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "removeComments": true,
+    "sourceMap": true,
+    "sourceRoot": "src",
+    "rootDir": "src",
+    "isolatedModules": true,
+    "typeRoots": ["./node_modules/@types", "src/types"]
+  },
+  "include": ["src/**/*.ts" , "src/**/*.json"],
+  "exclude": [
+    "node_modules", 
+    "./dist/**/*"
+  ]
+}
