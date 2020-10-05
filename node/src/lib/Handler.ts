@@ -1,5 +1,11 @@
-import { ResponseType } from '../types/router';
-import { HandlerInterface, LangType, ResultType } from '../types/handler';
+
+import { 
+  HandlerInterface, 
+  LangType, 
+  ResultType, 
+  LoggerDataType } from '../types';
+
+  import path from 'path';
 
 class Handler implements HandlerInterface {
 
@@ -13,18 +19,19 @@ class Handler implements HandlerInterface {
     this.error = 'error';
   }
 
-  public getLang = (lang: string) => {
+  public getLang = (req: any) => {
     let language: LangType;
+    const lang: string = req.headers.userlang;
     try {
-      language = require(`../locales/${lang}/lang.json`);
+      language = require(path.resolve(__dirname, `../locales/${lang}/lang`)).default;
     }
     catch(e) {
-      language = require(`../locales/en/lang.json`);
+      language = require(path.resolve(__dirname, `../locales/en/lang`)).default;
     }
     return language;
   }
 
-  public logger = (type: string, message: string, data: any, stdErr: any) => {
+  public logger = (type: string, message: string, data: LoggerDataType, stdErr: any) => {
     console.log(type, message, data, stdErr );
   }
 }

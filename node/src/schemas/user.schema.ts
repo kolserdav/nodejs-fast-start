@@ -6,26 +6,9 @@ const { ObjectId } = mongoose.Types;
 const Schema = mongoose.Schema;
 
 const User = new Schema({
-  googleID: {
+  name: {
     type: String,
-    unique: true,
-    required: [true, 'Google ID is required']
-  },
-  fullName: {
-    type: String,
-    required: [true, 'Full name is required']
-  },
-  givenName: {
-    type: String,
-    required: [true, 'Given name is required']
-  },
-  familyName: {
-    type: String,
-    required: [true, 'Family name is required']
-  },
-  imageURL: {
-    type: String,
-    required: [true, 'Image url is required']
+    required: [true, 'Name is required']
   },
   email: {
     type: String,
@@ -34,24 +17,10 @@ const User = new Schema({
     lowercase: true,
     validate: [validator.isEmail, 'Do insert a real email']
   },
-  gold: {
-    type: Number,
-    default: 100
-  },
-  level: {
-    type: Number,
-    default: 0
-  },
-  exp: {
-    type: Number,
-    default: 0
-  },
-  progress: {
-    type: Number,
-    default: 0
-  },
-  skins: {
-    type: [ObjectId]
+  password: {
+    type: String,
+    select: false,
+    required: [true, 'Password is required']
   },
   createTime: {
     type: Date,

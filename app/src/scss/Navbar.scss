@@ -1,0 +1,51 @@
+@import 'dimensions';
+
+.menu {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  transition: margin .3s;
+  margin: 0 0 0 -100%;
+}
+
+select {
+  background: $primary-color;
+  color: $light-color;
+  margin: 20px;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+option {
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.menu-item {
+  position: relative;
+  padding: 12px;
+  margin-top: 12px;
+  text-align: center;
+  background: $body-background;
+  width: 20vw;
+  border-top-right-radius: 12px;
+  border-bottom-right-radius: 12px;
+  @media(max-width: 1000px) {
+    width: 60vw;
+  }
+}
+
+.menu-body {
+  margin-top: $navbar-height;
+}
+
+.menu-item:hover {
+  opacity: 0.8;
+}
+
+.menu.is-open {
+  margin-left: 0;
+}

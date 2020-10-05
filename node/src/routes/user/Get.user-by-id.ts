@@ -3,8 +3,11 @@
   /u/:id GET
 */
 
-import { LangType } from '../../types/handler';
-import { RouterInterface, ResponseType } from '../../types/router';
+import { 
+  RouterInterface, 
+  ResponseType,
+  RequestType  
+} from '../../types';
 import Worker from '../../lib/Worker';
 
 class GetUserByID extends Worker implements RouterInterface {
@@ -13,11 +16,11 @@ class GetUserByID extends Worker implements RouterInterface {
     super();
   }
 
-  public handler = async (req: any, res: any) => {
-    
-    const lang: LangType = this.getLang(req.headers.userlang);
+  public handler = async (req: RequestType, res: any) => {
 
     const { id } = req.params;
+
+    const r = await this.getRedisValue(req, "dss");
 
     const user: ResponseType = await this.getUserById(req, id);
 

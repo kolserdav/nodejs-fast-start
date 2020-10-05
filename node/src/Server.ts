@@ -1,4 +1,4 @@
-import ServerInterface from './types/server';
+import { ServerInterface } from './types';
 import dotenv from 'dotenv';
 import express from 'express';
 import mongoose from 'mongoose';
@@ -10,6 +10,8 @@ import path from 'path';
 import https from 'https';
 import Worker from './lib/Worker';
 import logger from './lib/logger';
+
+import Middleware from './middlewares/Middleware';
 
 
 dotenv.config();
@@ -27,7 +29,12 @@ class Server extends Worker implements ServerInterface {
   
   private setRoutes(app: any): void {
     const router = new Router();
-    app.get('/u/:id', router.user.GetUserByID);
+    const middle = new Middleware();
+    app.get('/u/:id', middle.lang, middle.auth, router.user.GetUserByID);
+    app.post('/u', middle.lang, router.user.CreateUser);
+    app.post('/u/l', middle.lang, router.user.Login);
+    app.post('/u/a', middle.lang, router.user.GetAuth);
+    app.delete('/u/:id', middle.lang, router.user.Logout);
     
     return app;
   }

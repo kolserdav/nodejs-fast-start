@@ -1,10 +1,116 @@
+@import  "colors", 'dimensions';
+@import 'Navbar';
+
+$color: black;
+
 body {
   margin: 0;
+  background: $body-background;
+  color: $color;
 }
 
-$color: red;
+.nav {
+  z-index: 12;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: $navbar-height;
+  background: $primary-color;
+  box-shadow: 0 4px 2px -2px gray;
+}
 
-body {
+.item {
+  margin: $item-margin;
+}
+
+.icon {
+  z-index: 13;
+  margin: 13px;
+  cursor: pointer;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+}
+
+.center {
+  align-items: center;
+}
+
+.right {
+  margin-left: auto;
+  margin-right: 0;
+}
+
+.container {
+  position: relative;
+  top: $navbar-height;
+  width: $container-width;
+  margin: 10px auto 10px auto;
+}
+
+.col {
+  display: flex;
+  flex-direction: column;
+}
+
+.label {
+  margin: 5px 0 5px 0;
+  font-family: 'Ubuntu', serif;
+}
+
+.err {
+  padding: 20px;
+  border-radius: 6px;
+  cursor: help;
+}
+
+.warning {
+  background: orange;
+}
+
+.error {
+  background: tomato;
+}
+
+.input {
+  width: 20vw;
+  height: 30px;
+  border-radius: 5px;
+  font-size: large;
+  @media(max-width: 1600px) {
+    width: 40vw;
+  }
+  @media(max-width: 1000px) {
+    width: 60vw;
+  }
+}
+
+.button {
+  padding: 10px;
+  background-color: $primary-color;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  color: $light-color;
+  cursor: pointer;
+}
+
+.link {
+  display: block;
+  width: 100px;
   margin: 0;
-  color: $color;
+  text-decoration: none;
+}
+
+.link:hover {
+  text-decoration: underline;
+}
+
+.button:hover {
+  opacity: 0.9;
+}
+
+.button:active {
+  opacity: 0.5;
 }
