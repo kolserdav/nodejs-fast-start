@@ -15,6 +15,7 @@ export interface Language {
     email: string,
     password: string,
     passwordRepeat: string,
+    save: string
     warning: {
       name: string
     }

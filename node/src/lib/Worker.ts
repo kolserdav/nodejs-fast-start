@@ -19,7 +19,7 @@ class Worker extends Db {
 
 
   getRedisValue = async (req: any, key: string): Promise<ResponseType> => {
-    
+
     const client: any = this.getRedisClient();
 
     const getRes: ResponseType = await new Promise(async (resolve) => {
@@ -110,9 +110,10 @@ class Worker extends Db {
     return saveRes;
   };
 
-  setRedisValue = async (req: any, key: string, value: string | number): Promise<ResponseType> => {
+  setRedisValue = async (req: any, key: string, value: string | number, expire = false): Promise<ResponseType> => {
     
-    const client: any = this.getRedisClient();
+    const { SESSION_EXPIRE }: any = process.env;
+    const client = this.getRedisClient();
 
     const saveRes: ResponseType = await new Promise(async (resolve) => {
       client.on('error', (err: any) => {
@@ -136,7 +137,8 @@ class Worker extends Db {
         }, err); 
         resolve(error)
       });
-      const reply = await client.set(key, value);
+      const props = (expire)? ['EX', parseInt(SESSION_EXPIRE) * 24 * 3600] : []
+      const reply = await client.set(key, value, ...props);
       const result: ResponseType = {
         result: this.success,
         message: req.lang.redis.save.success,

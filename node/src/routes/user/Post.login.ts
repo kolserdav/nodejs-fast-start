@@ -20,8 +20,7 @@ class Login extends Worker implements RouterInterface {
   public handler = async (req: RequestType, res: any) => {
 
     const { MIN_PASSWORD_LENGTH, JWT_SECRET }: any = process.env;
-    const { password } = req.body;
-  
+    const { password, save } = req.body;
     if (password.length < parseInt(MIN_PASSWORD_LENGTH)) {
       const result: ResponseType = {
         result: this.warning,
@@ -47,7 +46,13 @@ class Login extends Worker implements RouterInterface {
       userAgent: req.headers.userAgent
     }, JWT_SECRET)
 
-    const saveRes: any = await this.setRedisValue(req, token, 1);
+    let value = 0;
+    let expire = false;
+    if (save === true) {
+      value = 1;
+      expire = true;
+    }
+    const saveRes: any = await this.setRedisValue(req, token, value);
 
     if (saveRes.status !== 201) {
       return await res.status(saveRes.status).json(saveRes); 

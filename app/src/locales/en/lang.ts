@@ -14,6 +14,7 @@ const lang: Language = {
     email: 'Email',
     password: 'Password',
     passwordRepeat: 'Password repeat',
+    save: 'Save me',
     warning: {
       name: 'Enter your name'
     }

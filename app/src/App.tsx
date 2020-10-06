@@ -39,7 +39,6 @@ function App(props: AppInterface) {
       type: 'SET_LANGUAGE',
       payload: langValue
     });
-
     const res: any = w.getAuth();
     res.then((d: any) => {
       if (d.status === 200) {

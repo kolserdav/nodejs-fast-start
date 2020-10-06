@@ -22,6 +22,10 @@ const User = new Schema({
     select: false,
     required: [true, 'Password is required']
   },
+  emailConfirmed: {
+    type: Boolean,
+    default: false
+  },
   createTime: {
     type: Date,
     required: [true, 'Create time is required']

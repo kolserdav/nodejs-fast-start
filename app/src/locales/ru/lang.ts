@@ -14,6 +14,7 @@ const lang: Language = {
     email: 'Емайл',
     password: 'Пароль',
     passwordRepeat: 'Повтор пароля',
+    save: 'Запомнить меня',
     warning: {
       name: 'Введите ваше имя'
     }

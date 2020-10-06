@@ -12,6 +12,7 @@ export type RegistrationData = {
 export type LoginData = {
   email: string,
   password: string,
+  save: boolean
 }
 
 const cookies = new Cookies();

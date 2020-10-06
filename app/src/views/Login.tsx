@@ -19,11 +19,13 @@ function Login() {
 
   const email: any = useRef();
   const password: any = useRef();
+  const save: any = useRef();
 
   const login = async () => {
     const data: LoginData = {
       email: email.current.value,
-      password: password.current.value
+      password: password.current.value,
+      save: save.current.checked
     }
     const res: any = await w.login(data);
     if (res.result === 'success') {
@@ -78,6 +80,14 @@ function Login() {
           ref={password} 
           type="password" 
           className="input"
+        ></input>
+      </div>
+      <div className="item row center">
+        <div className="label">{lang.form?.save}</div>
+        <input
+          ref={save} 
+          type="checkbox" 
+          className="input short"
         ></input>
       </div>
       <div className="item">
